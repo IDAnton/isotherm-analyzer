@@ -1,0 +1,17 @@
+/.ipynb_checkpoints
+/venv
+/venv311
+/venv312
+/venv10
+old notebooks/step-gen.ipynb
+.idea
+/__pycache__/
+*.mp4
+/data/datasets
+*.pyc
+/data/
+/animations/
+/data/
+/old notebooks/
+/data/
+/data/initial kernels/
