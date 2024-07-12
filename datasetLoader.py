@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.utils import shuffle
 
 
 def pre_process_isotherm(isotherm, scale=True):

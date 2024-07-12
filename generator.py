@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.animation as animation
 import time
+import random
 import itertools
 import os
 import hickle as hkl
@@ -45,6 +46,18 @@ class Generator:
         pore_distribution2 /= max(pore_distribution2)
         self.pore_distribution = (pore_distribution1 * a + pore_distribution2 * (1 - a)) * global_scale
         self.pore_distribution /= max(self.pore_distribution)
+
+    def generate_random_pore_distribution(self, peaks_number, d_range, sigma_range, intensity_range):
+        pore_distribution = np.zeros(self.a_array.size)
+        for i in range(peaks_number):
+            d = random.uniform(d_range[0], d_range[1])
+            sigma = random.uniform(sigma_range[0], sigma_range[1])
+            intensity = random.uniform(intensity_range[0], intensity_range[1])
+            pore_distribution += (1 / (sigma * np.sqrt(2 * np.pi))) * np.exp(-0.5 * np.power((self.a_array - d), 2)
+                                                                             / (2 * sigma ** 2)) * intensity
+        pore_distribution /= max(pore_distribution)
+        self.pore_distribution = pore_distribution
+        return pore_distribution
 
     # def calculate_isotherms_slow(self):
     #     self.n_s = np.zeros(len(self.pressures_s))
@@ -118,6 +131,22 @@ class Generator:
         anim.save("anim.mp4", writer=writervideo)
         plt.show()
 
+    def generate_data_set_several_random_peaks(self, name, number_of_isotherms):
+        print(f"Generating {name} with {number_of_isotherms} isotherms")
+        path = f'data/datasets/{name}.npz'
+        isotherm_data = np.empty((number_of_isotherms, self.n_s.size))
+        pore_distribution_data = np.empty((number_of_isotherms, self.pore_distribution.size))
+        for i in range(number_of_isotherms):
+            self.generate_random_pore_distribution(5, [-10, 60], [0.2, 20], intensity_range=[0, 1])
+            self.calculate_isotherms()
+            isotherm_data[i] = self.n_s
+            pore_distribution_data[i] = self.pore_distribution
+
+        with open(path, "wb") as f:
+            np.savez_compressed(f, isotherm_data=isotherm_data,
+                                pore_distribution_data=pore_distribution_data)
+        self.generation_statistics(path)
+
     def generate_data_set_2_peaks(self, name, data_len=5):
         path = f'data/datasets/{name}.npz'
         number_of_params = 3
@@ -170,20 +199,12 @@ class Generator:
                                 d0_1_data=d0_1_data, d0_2_data=d0_2_data,
                                 sigma1_data=sigma1_data, sigma2_data=sigma2_data,
                                 pore_distribution_data=pore_distribution_data)
+        self.generation_statistics(path)
+
+    def generation_statistics(self, path):
         file_stats = os.stat(path)
         print(f"file size {round(file_stats.st_size / (1024 * 1024))} MB")
         print("FINISHED")
-
-    def generate_pore_distribution_several_peaks(self, sigma_array, d_array, intensity_array):
-        pore_distribution = np.empty(self.a_array.size)
-        for i in range(len(sigma_array)):
-            pore_distribution += (1 / sigma_array[i]) * np.exp(-np.power((self.a_array - d_array[i]), 2)
-                                                                    / (2 * sigma_array[i] ** 2)) * intensity_array[i]
-        return pore_distribution
-
-
-    def generate_data_set_several_peaks(self, peaks_number, resolution, dataset_name):
-        pass
 
     def save_isotherm_and_distribution(self, path):
         np.savez(path, n_s=self.n_s, n_d=self.n_d, distr=self.pore_distribution)
@@ -203,11 +224,7 @@ if __name__ == "__main__":
                            path_a="data/initial kernels/Size_Kernel_Carbon_Adsorption.npy"
                            )
 
-    gen_silica.generate_data_set_several_peaks(5, 2, "test")
-
-
-
-    #gen_silica.generate_data_set(data_len=8, name="silica_PINN")
+    gen_carbon.generate_data_set_several_random_peaks(number_of_isotherms=30000, name="carbon_random_classification")
 
     # gen_silica.generate_data_set(data_len=5, name="silica_PINN")
     # gen_carbon.generate_data_set(data_len=8, name="Carbon_classification")
