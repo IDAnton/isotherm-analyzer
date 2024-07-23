@@ -32,19 +32,26 @@ def get_isotherm_and_distribution(file_path):
         for value in values:
             data = pd.read_csv(io.StringIO(value), sep="\s+|\t+|\s+\t+|\t+\s+")
             # data = data.iloc[: , 1:]
-            processed_data = data.iloc[2:, :]
+            processed_data = data.iloc[2:, :]  # cut headers
             result[section] = processed_data
     return result
+
+
+def separate_branches(pressure, adsorption):
+    separation_i = np.argmax(pressure)
+    return pressure[:separation_i], pressure[separation_i:][::-1],\
+           adsorption[:separation_i], adsorption[separation_i:][::-1]
 
 
 def get_numpy_arrays(pd_data):
     result = {}
     isotherm_data = pd_data["isotherm"]
     distribution_data = pd_data["distribution"]
-    result['p'] = isotherm_data[isotherm_data.columns[0]].values.astype(float)
-    result['adsorption'] = isotherm_data[isotherm_data.columns[1]].values.astype(float)
+    p = isotherm_data[isotherm_data.columns[0]].values.astype(float)
+    adsorption = isotherm_data[isotherm_data.columns[1]].values.astype(float)
+    result['p_adsorption'], result['p_desorption'], result['adsorption'], result['desorption'] = separate_branches(p, adsorption)
     result['pore_size'] = distribution_data[distribution_data.columns[0]].values.astype(float)
-    result['distribution'] = distribution_data[distribution_data.columns[1]].values.astype(float)
+    result['distribution'] = distribution_data[distribution_data.columns[3]].values.astype(float)
     return result
 
 
@@ -66,7 +73,7 @@ def save_as_dataset(dataset, name):
     isotherm_data = np.empty((len(dataset), pressures.size))
     pore_distribution_data = np.empty((len(dataset), pore_widths.size))
     for i, data in enumerate(dataset):
-        isotherm_data[i] = np.interp(pressures, data['p'], data['adsorption'])
+        isotherm_data[i] = np.interp(pressures, data['p_adsorption'], data['adsorption'])
         pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
     with open(path, "wb") as f:
         np.savez_compressed(f, isotherm_data=isotherm_data,
