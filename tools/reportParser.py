@@ -3,6 +3,7 @@ import pandas as pd
 import io
 import re
 import pathlib
+from inverse import fit_SLSQP
 
 
 def parse_file(file_path):
@@ -66,20 +67,51 @@ def parse_all_files(folder_path):
     return result
 
 
-def save_as_dataset(dataset, name):
+def save_as_dataset(dataset, name, generate_distribution=False):
     path = f'../data/datasets/{name}.npz'
     pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
     pore_widths = np.load("../data/initial kernels/Size_Kernel_Silica_Adsorption.npy")
-    isotherm_data = np.empty((len(dataset), pressures.size))
+    isotherm_data = np.empty((len(dataset), pressures[77:367].size))
     pore_distribution_data = np.empty((len(dataset), pore_widths.size))
+
+    ###  kernel for pore dist generation
+    kernel = np.load("../data/initial kernels/Kernel_Silica_Adsorption.npy")[:, 77:367]
+    ###
+
     for i, data in enumerate(dataset):
-        isotherm_data[i] = np.interp(pressures, data['p_adsorption'], data['adsorption'])
-        pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
+        isotherm_data[i] = np.interp(pressures[77:367], data['p_adsorption'], data['adsorption'])
+        if generate_distribution:
+            pore_distribution_data[i] = fit_SLSQP(adsorption=isotherm_data[i], kernel=kernel, a_array=pore_widths, alpha=0).x
+            print(f"{i} of {len(dataset)}")
+        else:
+            pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
     with open(path, "wb") as f:
         np.savez_compressed(f, isotherm_data=isotherm_data,
                             pore_distribution_data=pore_distribution_data)
 
 
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx, array[idx]
+
+
 if __name__ == '__main__':
     dataset = parse_all_files('../data/reports/')
-    save_as_dataset(dataset, "report")
+    save_as_dataset(dataset, "report", generate_distribution=True)
+    # max_p = 0
+    # min_d = 1
+    # min_a_last = 1
+    # for data in dataset:
+    #     max_p = max(max_p, data['p_adsorption'][0])
+    #     min_d = min(min_d, max_p, data['p_adsorption'][0])
+    #     min_a_last = min(min_a_last, data['p_adsorption'][-1])
+    #
+    # print(max_p)  #0.0733296
+    # print(min_d)  #0.989643
+    # print(min_a_last)  #0.967889
+    # pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
+    # print(find_nearest(pressures, value=0.0733296))  # (77, 0.0736680701375008)
+    # print(find_nearest(pressures, value=0.989643))  # (457, 0.989111423492432)
+    # print(find_nearest(pressures, value=0.967889))  # (367, 0.967983961105347)
+
