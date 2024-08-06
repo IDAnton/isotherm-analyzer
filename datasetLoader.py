@@ -9,7 +9,7 @@ def pre_process_isotherm(isotherm, scale=True):
     return isotherm
 
 
-def pre_process_isotherm_with_distribution(isotherm, distribution, scale=True):
+def pre_process_isotherm_with_distribution(isotherm, distribution, scale=False):
     if scale:
         isotherm_scale = max(isotherm)
         isotherm = isotherm / isotherm_scale

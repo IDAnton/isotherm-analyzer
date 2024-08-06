@@ -40,8 +40,8 @@ def get_isotherm_and_distribution(file_path):
 
 def separate_branches(pressure, adsorption):
     separation_i = np.argmax(pressure)
-    return pressure[:separation_i], pressure[separation_i:][::-1],\
-           adsorption[:separation_i], adsorption[separation_i:][::-1]
+    return pressure[:separation_i], pressure[separation_i:][::-1], \
+        adsorption[:separation_i], adsorption[separation_i:][::-1]
 
 
 def get_numpy_arrays(pd_data):
@@ -50,7 +50,8 @@ def get_numpy_arrays(pd_data):
     distribution_data = pd_data["distribution"]
     p = isotherm_data[isotherm_data.columns[0]].values.astype(float)
     adsorption = isotherm_data[isotherm_data.columns[1]].values.astype(float)
-    result['p_adsorption'], result['p_desorption'], result['adsorption'], result['desorption'] = separate_branches(p, adsorption)
+    result['p_adsorption'], result['p_desorption'], result['adsorption'], result['desorption'] = separate_branches(p,
+                                                                                                                   adsorption)
     result['pore_size'] = distribution_data[distribution_data.columns[0]].values.astype(float)
     result['distribution'] = distribution_data[distribution_data.columns[3]].values.astype(float)
     return result
@@ -71,20 +72,23 @@ def save_as_dataset(dataset, name, generate_distribution=False):
     path = f'../data/datasets/{name}.npz'
     pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
     pore_widths = np.load("../data/initial kernels/Size_Kernel_Silica_Adsorption.npy")
-    isotherm_data = np.empty((len(dataset), pressures[77:367].size))
-    pore_distribution_data = np.empty((len(dataset), pore_widths.size))
 
     ###  kernel for pore dist generation
     kernel = np.load("../data/initial kernels/Kernel_Silica_Adsorption.npy")[:, 77:367]
     ###
-
-    for i, data in enumerate(dataset):
-        isotherm_data[i] = np.interp(pressures[77:367], data['p_adsorption'], data['adsorption'])
-        if generate_distribution:
-            pore_distribution_data[i] = fit_SLSQP(adsorption=isotherm_data[i], kernel=kernel, a_array=pore_widths, alpha=0).x
-            print(f"{i} of {len(dataset)}")
-        else:
-            pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
+    alpha_arr = [0, 1, 5]
+    dataset_size = len(dataset) * len(alpha_arr)
+    isotherm_data = np.empty((dataset_size, pressures[77:367].size))
+    pore_distribution_data = np.empty((dataset_size, pore_widths.size))
+    for alpha in alpha_arr:
+        for i, data in enumerate(dataset):
+            print(f"isotherm number {i} out of {dataset_size}")
+            isotherm_data[i] = np.interp(pressures[77:367], data['p_adsorption'], data['adsorption'])
+            if generate_distribution:
+                pore_distribution_data[i] = fit_SLSQP(adsorption=isotherm_data[i], kernel=kernel, a_array=pore_widths,
+                                                      alpha=alpha).x
+            else:
+                pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
     with open(path, "wb") as f:
         np.savez_compressed(f, isotherm_data=isotherm_data,
                             pore_distribution_data=pore_distribution_data)
@@ -98,7 +102,7 @@ def find_nearest(array, value):
 
 if __name__ == '__main__':
     dataset = parse_all_files('../data/reports/')
-    save_as_dataset(dataset, "report", generate_distribution=True)
+    save_as_dataset(dataset, "report_with_regularization", generate_distribution=True)
     # max_p = 0
     # min_d = 1
     # min_a_last = 1
@@ -114,4 +118,3 @@ if __name__ == '__main__':
     # print(find_nearest(pressures, value=0.0733296))  # (77, 0.0736680701375008)
     # print(find_nearest(pressures, value=0.989643))  # (457, 0.989111423492432)
     # print(find_nearest(pressures, value=0.967889))  # (367, 0.967983961105347)
-

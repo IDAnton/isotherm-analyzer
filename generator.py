@@ -6,6 +6,7 @@ import matplotlib as mpl
 import matplotlib.animation as animation
 import time
 import random
+import inverse
 import itertools
 import os
 import hickle as hkl

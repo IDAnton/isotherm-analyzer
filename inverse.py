@@ -21,11 +21,11 @@ def fit_SLSQP(adsorption, kernel, alpha=0, beta=0, a_array=None):
     def sum_squares(pore_dist):
         S_tot = np.sum(pore_dist)
         w = pore_dist / S_tot
-        return np.square(
+        return (np.square(
             np.subtract(
                 kernel_loading(pore_dist),
-                adsorption)).sum(axis=0) + alpha * np.sum(pore_dist * np.log(pore_dist)) #/ len(pore_dist) #+ beta * np.sum(
-            #np.square(pore_dist))
+                adsorption)).sum(axis=0) + alpha * np.sum(pore_dist * np.log(pore_dist)) +
+                beta * np.sum(np.diff(pore_dist)/a_array[:-1]))
 
     cons = [{
         'type': 'ineq',
