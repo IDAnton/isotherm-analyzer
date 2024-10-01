@@ -76,7 +76,7 @@ def save_as_dataset(dataset, name, generate_distribution=False):
     ###  kernel for pore dist generation
     kernel = np.load("../data/initial kernels/Kernel_Silica_Adsorption.npy")[:, 77:367]
     ###
-    alpha_arr = [0, 1, 5]
+    alpha_arr = [0]
     dataset_size = len(dataset) * len(alpha_arr)
     isotherm_data = np.empty((dataset_size, pressures[77:367].size))
     pore_distribution_data = np.empty((dataset_size, pore_widths.size))
@@ -86,7 +86,7 @@ def save_as_dataset(dataset, name, generate_distribution=False):
             isotherm_data[i] = np.interp(pressures[77:367], data['p_adsorption'], data['adsorption'])
             if generate_distribution:
                 pore_distribution_data[i] = fit_SLSQP(adsorption=isotherm_data[i], kernel=kernel, a_array=pore_widths,
-                                                      alpha=alpha).x
+                                                      alpha=alpha, beta=0).x
             else:
                 pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
     with open(path, "wb") as f:
@@ -102,7 +102,7 @@ def find_nearest(array, value):
 
 if __name__ == '__main__':
     dataset = parse_all_files('../data/reports/')
-    save_as_dataset(dataset, "report_with_regularization", generate_distribution=True)
+    save_as_dataset(dataset, "reports_no_regularization", generate_distribution=True)
     # max_p = 0
     # min_d = 1
     # min_a_last = 1

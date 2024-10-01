@@ -10,22 +10,12 @@ def fit_SLSQP(adsorption, kernel, alpha=0, beta=0, a_array=None):
             pore_dist[:, np.newaxis]
         ).sum(axis=0)
 
-    # def kernel_loading2(pore_dist, a_array):
-    #     p_d = np.empty(len(a_array))
-    #     p_d[:-1] = a_array[1:] - a_array[:1]
-    #     p_d[-1] = p_d[-2]
-    #     p_d = np.multiply(p_d, pore_dist)
-    #     n_s = kernel.T.dot(p_d)
-    #     return n_s
-
     def sum_squares(pore_dist):
-        S_tot = np.sum(pore_dist)
-        w = pore_dist / S_tot
         return (np.square(
             np.subtract(
                 kernel_loading(pore_dist),
                 adsorption)).sum(axis=0) + alpha * np.sum(pore_dist * np.log(pore_dist)) +
-                beta * np.sum(np.diff(pore_dist)/a_array[:-1]))
+                beta * np.sum(np.square(np.diff(pore_dist)/a_array[:-1])))
 
     cons = [{
         'type': 'ineq',
@@ -39,7 +29,7 @@ def fit_SLSQP(adsorption, kernel, alpha=0, beta=0, a_array=None):
         method='SLSQP',
         bounds=bounds,
         constraints=cons,
-        options={'ftol': 1e-04}
+        options={'ftol': 1e-04, 'maxiter': 300}
     )
     return result
 
