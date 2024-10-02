@@ -3,7 +3,7 @@ import reportParser
 import numpy as np
 from isotherm import Isotherm
 from PyQt6.QtGui import QDoubleValidator
-from PyQt6.QtWidgets import QLineEdit, QFileDialog, QLabel
+from PyQt6.QtWidgets import QLineEdit, QFileDialog, QLabel, QComboBox
 
 from matplotlib.backends.backend_qtagg import FigureCanvas
 from matplotlib.backends.backend_qtagg import \
@@ -20,6 +20,12 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.data = Isotherm()
         self.data.load_kernel()
 
+        ##
+        self.fitted_p = None
+        self.fitted_restored = None
+        self.fitted_real = None
+        ##
+
     def initWidgets(self):
         self._main = QtWidgets.QWidget()
         self.setCentralWidget(self._main)
@@ -35,6 +41,9 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self._dynamic_ax = dynamic_canvas.figure.subplots()
         self._dynamic_ax_PSD = dynamic_canvas_PSD.figure.subplots()
         self.isothermLine, = self._dynamic_ax.plot([], [], marker="*", label="origin isotherm")
+        self.fittedOriginLine, = self._dynamic_ax.plot([], [], marker="*", label="fitted origin")
+        self.fittedOriginMeasuredLine, = self._dynamic_ax.plot([], [], marker="*", label="fitted measured")
+
         self.interpolated_isothermLine, = self._dynamic_ax.plot([], [], marker=".", label="interpolated isotherm")
         self.restored_isothermLine, = self._dynamic_ax.plot([], [], marker=".", label="PSD isotherm")
         self.definedPSDLine, = self._dynamic_ax_PSD.plot([], [], marker=".", label="defined PSD")
@@ -61,6 +70,12 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         layout.addWidget(openDialogBtn, 6, 1)
         openDialogBtn.clicked.connect(self.open_dialog)
 
+        self.kernel_selection = QComboBox()
+        self.kernel_selection.addItems(["../data/initial kernels/excel/Silica-loc-isoth1.xlsx",
+                                  "../data/initial kernels/excel/Carbon-loc-isoth-N2.xlsx"])
+        layout.addWidget(self.kernel_selection)
+        self.kernel_selection.currentTextChanged.connect(self.kernel_changed)
+
 
     def process(self):
         self.data.process_isotherm(float(self.alphaInput.text()), float(self.betaInput.text()))
@@ -69,8 +84,12 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self._dynamic_ax.set_xlim([0.99 * min(self.data.pressureData), 1.01 * max(self.data.pressureData)])
         self.isothermLine.set_data(self.data.pressureData, self.data.isothermData)
         self.interpolated_isothermLine.set_data(self.data.interpolated_kernel_p, self.data.interpolated_isotherm)
+        self.fittedOriginLine.set_data(self.fitted_p, self.fitted_restored)
+        self.fittedOriginMeasuredLine.set_data(self.fitted_p, self.fitted_real)
         self.isothermLine.figure.canvas.draw()
         self.interpolated_isothermLine.figure.canvas.draw()
+        self.fittedOriginLine.figure.canvas.draw()
+        self.fittedOriginLine.figure.canvas.draw()
 
         self.restored_isothermLine.set_data(self.data.interpolated_kernel_p, self.data.restored_isotherm)
         self._dynamic_ax_PSD.set_ylim([0, 1.05 * max(self.data.defined_PSD)])
@@ -81,6 +100,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.restored_isothermLine.figure.canvas.draw()
 
 
+    def kernel_changed(self):
+        self.data.load_kernel(self.kernel_selection.currentText())
+        self.data.interpolate_isotherm()
+        self.data.process_kernel()
+
     def open_dialog(self):
         fname = QFileDialog.getOpenFileName(self)
         try:
@@ -90,6 +114,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
             self.data.pressureData = data["p_adsorption"]
             self.data.reference_PSD = data["distribution"]
             self.data.reference_pore_sizes = data["pore_size"]
+
+            self.fitted_p = data["fitted_p"]
+            self.fitted_restored = data["fitted_restored"]
+            self.fitted_real = data["fitted_real"]
+
             self.data.interpolate_isotherm()
             self.data.process_kernel()
             self.process()

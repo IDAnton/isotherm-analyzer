@@ -14,7 +14,7 @@ class Isotherm():
         self.reference_PSD = None
         self.reference_pore_sizes = None
 
-    def load_kernel(self, kernel_path="../data/initial kernels/excel/Silica-loc-isoth1.xlsx"):
+    def load_kernel(self, kernel_path="../data/initial kernels/excel/Carbon-loc-isoth-N2.xlsx"):
         list_name = kernel_path
         dataframe_sorb = pd.read_excel(list_name, header=None, sheet_name="Adsorption")
         P_START = 0  # индекс минимального давления
@@ -30,7 +30,10 @@ class Isotherm():
             array = np.asarray(array)
             idx = (np.abs(array - value)).argmin()
             return idx
+
+        self.kernel_p_array = self.kernel_p_array[~np.isnan(self.kernel_p_array)]
         interpolated_isotherm_raw = np.interp(self.kernel_p_array, self.pressureData, self.isothermData)
+        #interpolated_isotherm_raw = interpolated_isotherm_raw[~np.isnan(interpolated_isotherm_raw)]
         max_p = np.max(self.pressureData)
         min_p = np.min(self.pressureData)
         self.max_p_idx = find_nearest(self.kernel_p_array, max_p)

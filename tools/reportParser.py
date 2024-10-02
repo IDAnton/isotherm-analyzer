@@ -14,6 +14,7 @@ def parse_file(file_path):
     patterns = {
         "isotherm": r"== Isotherm ==\n\n(.*?)== Absolute Isotherm ==",
         "distribution": r"== \^G Pore Size Distribution ==\n\n(.*?)== \^G Pore Size Distribution \(log\) ==",
+        "fitted": r"== \^G Fitting Comparison ==\n\n(.*?)\Z",
     }
 
     data = {}
@@ -22,7 +23,6 @@ def parse_file(file_path):
         match = re.search(pattern, content, re.DOTALL)
         if match:
             data[section] = match.groups()
-
     return data
 
 
@@ -48,12 +48,16 @@ def get_numpy_arrays(pd_data):
     result = {}
     isotherm_data = pd_data["isotherm"]
     distribution_data = pd_data["distribution"]
+    fitted_data = pd_data["fitted"]
     p = isotherm_data[isotherm_data.columns[0]].values.astype(float)
     adsorption = isotherm_data[isotherm_data.columns[1]].values.astype(float)
     result['p_adsorption'], result['p_desorption'], result['adsorption'], result['desorption'] = separate_branches(p,
                                                                                                                    adsorption)
     result['pore_size'] = distribution_data[distribution_data.columns[0]].values.astype(float)
     result['distribution'] = distribution_data[distribution_data.columns[3]].values.astype(float)
+    result['fitted_p'] = fitted_data[fitted_data.columns[0]].values.astype(float)
+    result['fitted_restored'] = fitted_data[fitted_data.columns[1]].values.astype(float)
+    result['fitted_real'] = fitted_data[fitted_data.columns[2]].values.astype(float)
     return result
 
 
