@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import re
 import pathlib
-from inverse import fit_SLSQP
+from inverse import fit_SLSQP, fit_linear
 
 
 def parse_file(file_path):
@@ -64,35 +64,35 @@ def get_numpy_arrays(pd_data):
 def parse_all_files(folder_path):
     file_paths = list(pathlib.Path(folder_path).iterdir())
     result = []
+    file_paths_result = []
     for file_path in file_paths:
         pd_data = get_isotherm_and_distribution(file_path)
         if pd_data == {}:
             continue
         result.append(get_numpy_arrays(pd_data))
-    return result
+        file_paths_result.append(file_path)
+    return result, file_paths_result
 
 
-def save_as_dataset(dataset, name, generate_distribution=False):
+def save_as_dataset(dataset, name, regularization_list, generate_distribution=False):
     path = f'../data/datasets/{name}.npz'
     pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
     pore_widths = np.load("../data/initial kernels/Size_Kernel_Silica_Adsorption.npy")
 
     ###  kernel for pore dist generation
-    kernel = np.load("../data/initial kernels/Kernel_Silica_Adsorption.npy")[:, 77:367]
+    kernel = np.load("../data/initial kernels/Kernel_Silica_Adsorption.npy")[:, 77:-10]
     ###
     alpha_arr = [0]
     dataset_size = len(dataset) * len(alpha_arr)
-    isotherm_data = np.empty((dataset_size, pressures[77:367].size))
+    isotherm_data = np.empty((dataset_size, pressures[77:-10].size))
     pore_distribution_data = np.empty((dataset_size, pore_widths.size))
-    for alpha in alpha_arr:
-        for i, data in enumerate(dataset):
-            print(f"isotherm number {i} out of {dataset_size}")
-            isotherm_data[i] = np.interp(pressures[77:367], data['p_adsorption'], data['adsorption'])
-            if generate_distribution:
-                pore_distribution_data[i] = fit_SLSQP(adsorption=isotherm_data[i], kernel=kernel, a_array=pore_widths,
-                                                      alpha=alpha, beta=0).x
-            else:
-                pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
+    for i, data in enumerate(dataset):
+        print(f"isotherm number {i} out of {dataset_size}")
+        isotherm_data[i] = np.interp(pressures[77:-10], data['p_adsorption'], data['adsorption'])
+        if generate_distribution:
+            pore_distribution_data[i] = fit_linear(adsorption=isotherm_data[i], kernel=kernel, alpha=regularization_list[i]).x
+        else:
+            pore_distribution_data[i] = np.interp(pore_widths, data['pore_size'], data['distribution'])
     with open(path, "wb") as f:
         np.savez_compressed(f, isotherm_data=isotherm_data,
                             pore_distribution_data=pore_distribution_data)
@@ -105,8 +105,20 @@ def find_nearest(array, value):
 
 
 if __name__ == '__main__':
-    dataset = parse_all_files('../data/reports/')
-    save_as_dataset(dataset, "reports_no_regularization", generate_distribution=True)
+    import pandas as pd
+
+    dataset, paths = parse_all_files('../data/reports/')
+    regularization_list = pd.read_csv("tyhonov.csv")._get_column_array(3)
+    cut_dataset = []
+    cut_regularization_list = []
+    pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
+    for i, iso in enumerate(dataset):
+        if iso['p_adsorption'][0] > pressures[77] or iso['p_adsorption'][-1] < pressures[-10]:
+            continue
+        cut_dataset.append(iso)
+        cut_regularization_list.append(regularization_list[i])
+    save_as_dataset(cut_dataset, "reports_best_tyhanov", regularization_list=cut_regularization_list, generate_distribution=True)
+
     # max_p = 0
     # min_d = 1
     # min_a_last = 1

@@ -17,7 +17,7 @@ def pre_process_isotherm_with_distribution(isotherm, distribution, scale=False):
     return isotherm, distribution
 def load_dataset(path):
     min_exp_pressure_i = 77
-    max_exp_pressure_i = 367  # silcia [40:458] # carbon [40:547] ////// reports: [77:367]
+    max_exp_pressure_i = -10  # silcia [40:458] # carbon [40:547] ////// reports: [77:-10]
     with open(path, 'rb') as f:
         dataset = np.load(f)
         isotherm_data = dataset["isotherm_data"]
