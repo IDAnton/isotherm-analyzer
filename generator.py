@@ -135,12 +135,12 @@ class Generator:
     def generate_data_set_several_random_peaks(self, name, number_of_isotherms):
         print(f"Generating {name} with {number_of_isotherms} isotherms")
         path = f'data/datasets/{name}.npz'
-        isotherm_data = np.empty((number_of_isotherms, self.n_s.size))
+        isotherm_data = np.empty((number_of_isotherms, self.n_s[77:-10].size))
         pore_distribution_data = np.empty((number_of_isotherms, self.pore_distribution.size))
         for i in range(number_of_isotherms):
-            self.generate_random_pore_distribution(5, [-10, 60], [0.2, 20], intensity_range=[0, 1])
+            self.generate_random_pore_distribution(5, [-10, 30], [0.2, 5], intensity_range=[0, 1])
             self.calculate_isotherms()
-            isotherm_data[i] = self.n_s
+            isotherm_data[i] = self.n_s[77:-10]
             pore_distribution_data[i] = self.pore_distribution
 
         with open(path, "wb") as f:
@@ -225,7 +225,7 @@ if __name__ == "__main__":
                            path_a="data/initial kernels/Size_Kernel_Carbon_Adsorption.npy"
                            )
 
-    gen_carbon.generate_data_set_several_random_peaks(number_of_isotherms=30000, name="carbon_random_classification")
+    gen_silica.generate_data_set_several_random_peaks(number_of_isotherms=5000, name="silica_random_classification_narrow")
 
     # gen_silica.generate_data_set(data_len=5, name="silica_PINN")
     # gen_carbon.generate_data_set(data_len=8, name="Carbon_classification")
