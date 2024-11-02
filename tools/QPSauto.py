@@ -1,6 +1,7 @@
 import time
 from pywinauto.application import Application
 from pywinauto.keyboard import send_keys
+from pywinauto.timings import TimeoutError
 from os import listdir
 from os.path import isfile, join
 
@@ -13,14 +14,21 @@ class App:
 
     def process_file(self, name):
         time.sleep(0.3)
-        self.window.wait("ready")
+        try:
+            self.window.wait("ready")
+        except Exception as e:
+            time.sleep(1)
+            self.window.wait("ready")
+        time.sleep(0.3)
         self.window.menu_select("0")
         time.sleep(0.3)
         send_keys('{DOWN}')
+
         time.sleep(0.1)
         send_keys('{ENTER}')
         file_dlg = self.app.window(best_match="Открыть", found_index=0)
         file_dlg.wait("ready")
+        time.sleep(0.3)
         file_dlg.child_window(best_match="Имя файла:Edit").type_keys(name)
         time.sleep(0.5)
         file_dlg.child_window(best_match="Открыть4", control_type="Button").click()
@@ -69,10 +77,34 @@ class App:
         time.sleep(0.3)
 
 
+def get_unprocessed(files, redy_files):
+    files_ = set([f.replace(".QPS", "").replace(".qps", "") for f in files])
+    redy_files_ = set([f.replace(".txt", "").replace(" (Isotherm)", "") for f in redy_files])
+    rest = files_ - redy_files_
+    rest_files = [f + ".QPS" for f in rest]
+    return rest_files
+
+
 if __name__ == "__main__":
     QPS_path = r"C:\QCdata\Physisorb"
     files = [f for f in listdir(QPS_path) if isfile(join(QPS_path, f))]
-    files = files[30:]
+    path_to_ready_files = r"C:\QCdata\Export"
+    redy_files = [f for f in listdir(path_to_ready_files) if isfile(join(path_to_ready_files, f))]
+    files_to_process = get_unprocessed(files, redy_files)
+    print("files_to_process: ", len(files_to_process))
     app = App()
-    for file in files:
-        app.process_file(file)
+    i = 0
+    while i < len(files_to_process):
+        try:
+            app.process_file(files_to_process[i])
+            i += 1
+            print(i)
+        except Exception as e:
+            print("error:", e)
+            i += 1
+            try:
+                app.app.kill()
+                app = App()
+                files_to_process = get_unprocessed(files, redy_files)
+            except Exception as e:
+                print("error while kill", e)

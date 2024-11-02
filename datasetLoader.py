@@ -29,7 +29,7 @@ def load_dataset(path):
         #isotherm, pore_distribution = pre_process_isotherm_with_distribution(isotherm_data[i][min_exp_pressure_i:max_exp_pressure_i],
         #                                                  pore_distribution_data[i]) # for generated dataset
         isotherm, pore_distribution = pre_process_isotherm_with_distribution(
-            isotherm_data[i], pore_distribution_data[i])
+            isotherm_data[i], pore_distribution_data[i], scale=True)
         x[i] = isotherm
         y[i] = pore_distribution
     x, y = shuffle(x, y)
