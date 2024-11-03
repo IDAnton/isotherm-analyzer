@@ -107,8 +107,8 @@ def find_nearest(array, value):
 if __name__ == '__main__':
     import pandas as pd
 
-    dataset, paths = parse_all_files('../data/reports/')
-    regularization_list = pd.read_csv("tyhonov.csv")._get_column_array(3)
+    dataset, paths = parse_all_files('../data/experimental_isotherms/reports/')
+    regularization_list = pd.read_csv("../data/experimental_isotherms/tyhonov.csv")._get_column_array(3)
     cut_dataset = []
     cut_regularization_list = []
     pressures = np.load("../data/initial kernels/Pressure_Silica.npy")
