@@ -1,0 +1,42 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:03/30/23       Operator: Ayupov              Date:2023/04/06
+Sample ID:     M38                 Filename:      M38_2870_slitQSDFT.qps
+Sample Desc:   Maximowa            Comment:        
+Outgas Time:   3.0 hrs             Outgas Temp:   300.0 °C            Sample Weight: 0.1303 g
+Analysis gas:  NITROGEN            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 1440.0 min          Instrument:    Autosorb Station 2  Bath temp.:    77.4 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 1.00 ÅEff. cell stem diam. (d): 1.0000 mm
+ 
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                      Volume @ STP                1 / [ W((Po/P) - 1) ]
+            Pressure                                                             
+              P/Po                            cc/g                               
+
+               5.26880e-02                    30.4948                          1.4593e+00
+               6.26242e-02                    31.3025                          1.7077e+00
+               7.53609e-02                    32.2528                          2.0219e+00
+               8.75696e-02                    33.0766                          2.3216e+00
+               9.32171e-02                    33.4391                          2.4597e+00
+               1.11578e-01                    34.6166                          2.9029e+00
+               1.35925e-01                    36.0115                          3.4951e+00
+               1.61120e-01                    37.3034                          4.1196e+00
+               1.86133e-01                    38.5621                          4.7453e+00
+               2.11138e-01                    39.8055                          5.3799e+00
+
+                                                BET summary
+                                           Slope =        24.646
+                                       Intercept =         1.595e-01
+                      Correlation coefficient, r =         0.999977
+                                       C constant=       155.491
+ 
+                                    Surface Area =       140.391 m²/g
+ 
+ 

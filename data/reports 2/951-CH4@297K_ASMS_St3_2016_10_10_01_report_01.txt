@@ -1,0 +1,71 @@
+== Analysis Data ==
+                                               Administrative information
+
+Analysis performed on:                                                        10/10/2016
+Analysis performed by:                                                        Ayupov
+Comments:                                                                      
+Instrument:                                                                   AS6KR/MP Station: 3
+Instrument version:                                                           n/a
+Software version:                                                             2.02
+ 
+                                                  Sample ifnformation
+
+Id:                                                                           P8-2-4-3.0
+Description:                                                                  Melgunov
+Weight:                                                                       3.0255 g
+ 
+                                             Sample preparation information
+
+Outgas time:                                                                  2.0 hrs
+Outgas temperature:                                                           40.0 C
+ 
+                                                  Analysis information
+
+Analysis gas:                                                                 Methane
+Cross Section Area:                                                           21 
+Molecular weight:                                                             16.04 
+Non-ideality correction:                                                      1e-08 
+Ambient temperature:                                                          300 K
+Pressure tolerance band:                                                      0
+Equilibration time:                                                           1
+== Data Reduction Parameters ==
+                  Thermal Transpiration: off    Eff. mol. diameter (D): 3.54 Å      Eff. cell stem diam. (d): 4.0000 mm
+t-Method          Calc. method: Halsey
+MP method         Thickness interval: 0.50A
+Alpha-s method    Std. isotherm: _ASIL1         P / Po :          0.40
+Adsorbate         Carbon-dioxide                Temperature       273.150K
+                  Molec. Wt.: 44.010            Cross Section:    21.000  Å²        Liquid Density:   0.927  g/cc
+                  Contact Angle: 0.0  degrees   Surf. Tension:    4.350  erg/cm²
+                  Critical Temp.: 304.100  K    Critical Press.:  72.900  atm       SuperCritic. K.:  1.000
+                  Avg. Diameter:0.330  nm       Polarizability:   2.560  (cc/molec) x 10-24Magn. Suscept.:3.500
+                  Molec. Density6.420  (mol/cm²)x1014
+Adsorbent         Oxygen/Zeolite
+                  Atom Diameter: 0.276  nm      Surf. Atom Dens.: 13.100  (mol/cm²)x1014Polarizability: 2.500  (cc/molec)x10-24
+                                                Magn. Susc.:      1.300  (cc/molec)x10-29
+== Absolute Isotherm ==
+
+
+                          Pressure                                                  Volume @ STP
+                                                                                           
+                            Torr                                                        cc/g
+
+                            40.8174                                                      0.0134
+                            81.2377                                                      0.0243
+                           121.2692                                                      0.0342
+                           161.3973                                                      0.0431
+                           201.3633                                                      0.0522
+                           241.4009                                                      0.0609
+                           281.4308                                                      0.0691
+                           321.4438                                                      0.0771
+                           361.4363                                                      0.0850
+                           401.4708                                                      0.0925
+                           441.4758                                                      0.1003
+                           481.5119                                                      0.1076
+                           521.5021                                                      0.1148
+                           561.5112                                                      0.1220
+                           601.5342                                                      0.1294
+                           641.5365                                                      0.1363
+                           681.6136                                                      0.1431
+                           721.5411                                                      0.1502
+                           761.5984                                                      0.1565
+                           797.7672                                                      0.1623

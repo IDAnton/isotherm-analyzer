@@ -1,0 +1,37 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:03/22/23       Operator: Ayupov              Date:2023/04/04
+Sample ID:     M42                 Filename:      M42_2871_slitQSDFT.qps
+Sample Desc:   Maximowa            Comment:        
+Outgas Time:   3.0 hrs             Outgas Temp:   300.0 °C            Sample Weight: 0.018 g
+Analysis gas:  NITROGEN            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 673.9 min           Instrument:    Autosorb Station 4  Bath temp.:    77.4 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 1.00 ÅEff. cell stem diam. (d): 1.0000 mm
+ 
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                      Volume @ STP                1 / [ W((Po/P) - 1) ]
+            Pressure                                                             
+              P/Po                            cc/g                               
+
+               3.02018e-02                    31.9082                          7.8091e-01
+               3.43013e-02                    32.4914                          8.7468e-01
+               3.93885e-02                    33.2066                          9.8798e-01
+               4.59424e-02                    34.0731                          1.1308e+00
+               5.41261e-02                    35.0052                          1.3080e+00
+
+                                                BET summary
+                                           Slope =        21.993
+                                       Intercept =         1.193e-01
+                      Correlation coefficient, r =         0.999949
+                                       C constant=       185.348
+ 
+                                    Surface Area =       157.489 m²/g
+ 
+ 

@@ -1,0 +1,36 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:04/13/23       Operator: Ayupov              Date:2023/04/17
+Sample ID:     AY23-118 CKO N24    Filename:      AY23-118 CKO N24 2899 QSDFT Slit Adsorption.raw
+Sample Desc:   Jelezkij            Comment:        
+Outgas Time:   24.0 hrs            Outgas Temp:   300.0 °C            Sample Weight: 0.0459 g
+Analysis gas:  NITROGEN            Molec. Wt:     28.0134 g           Non-ideality:  6.595e-05 1/Torr
+Analysis Time: 1469.3 min          Instrument:    Autosorb Station 4  Bath temp.:    77.35 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 1.00 ÅEff. cell stem diam. (d): 1.0000 mm
+ 
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                      Volume @ STP                1 / [ W((Po/P) - 1) ]
+            Pressure                                                             
+              P/Po                            cc/g                               
+
+               8.59463e-03                   349.8684                          1.9825e-02
+               1.01713e-02                   358.8150                          2.2914e-02
+               1.29129e-02                   372.7281                          2.8082e-02
+               1.63596e-02                   386.3793                          3.4441e-02
+
+                                                BET summary
+                                           Slope =         1.879
+                                       Intercept =         3.747e-03
+                      Correlation coefficient, r =         0.999938
+                                       C constant=       502.482
+ 
+                                    Surface Area =      1849.524 m²/g
+ 
+ 

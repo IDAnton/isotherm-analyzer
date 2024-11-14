@@ -1,0 +1,44 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:2/15/2023      Operator: Ayupov              Date:2023/02/21
+Sample ID:     AY23-11 EH-14       Filename:      AY23-11 EH-14_2830-ASMS_St1_2023_02_15_01.QPS
+Sample Desc:   Wlasowa             Comment:        
+Outgas Time:   6.5 hrs             Outgas Temp:   300.0 °C            Sample Weight: 0.1673 g
+Analysis gas:  Nitrogen            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 1454.1 min          Instrument:    Autosorb Station 1  Bath temp.:    77.3 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 3.54 ÅEff. cell stem diam. (d): 4.0000 mm
+ 
+t-Method       Calc. method: de Boer
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                        Thickness                     Volume @ STP
+            Pressure                                                             
+                                              (nm)                           (cc/g)
+
+               2.097184e-01                    4.4316e-01                     59.484
+               2.348921e-01                    4.5931e-01                     60.830
+               2.598654e-01                    4.7531e-01                     62.152
+               2.849152e-01                    4.9143e-01                     63.444
+               3.099811e-01                    5.0774e-01                     64.716
+               3.349915e-01                    5.2428e-01                     65.978
+               3.598273e-01                    5.4105e-01                     67.289
+               3.848838e-01                    5.5840e-01                     68.550
+               4.096816e-01                    5.7608e-01                     69.841
+
+                                             V-t method summary
+                                         Thickness method: DeBoer
+                                           Slope =         7.789
+                                       Intercept =        25.089
+                     Correlation coefficient, r  =         0.999743
+ 
+                                Micropore volume =         0.039 cc/g
+                                  Micropore area =        90.982 m²/g
+                           External surface area =       120.482 m²/g
+ 
+ 

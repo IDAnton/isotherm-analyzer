@@ -1,0 +1,38 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:3/21/2023      Operator: Ayupov              Date:2023/04/11
+Sample ID:     AY23-55 PK_BYA_5_600Filename:      AY23-55 PK_BYA_5_600_2866-ASMS_St3_2023_03_21_01.QPS
+Sample Desc:   Maslonkin           Comment:        
+Outgas Time:   27.0 hrs            Outgas Temp:   300.0 °C            Sample Weight: 0.1351 g
+Analysis gas:  Nitrogen            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 1137.5 min          Instrument:    Autosorb Station 3  Bath temp.:    77.3 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 3.54 ÅEff. cell stem diam. (d): 4.0000 mm
+ 
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                      Volume @ STP                1 / [ W((Po/P) - 1) ]
+            Pressure                                                             
+              P/Po                            cc/g                               
+
+               1.01284e-02                    40.8989                          2.0017e-01
+               1.86026e-02                    44.2983                          3.4237e-01
+               2.54445e-02                    46.2995                          4.5119e-01
+               3.10336e-02                    47.6861                          5.3738e-01
+               3.65335e-02                    48.8865                          6.2061e-01
+               4.29785e-02                    50.1921                          7.1589e-01
+
+                                                BET summary
+                                           Slope =        15.676
+                                       Intercept =         4.757e-02
+                      Correlation coefficient, r =         0.999685
+                                       C constant=       330.557
+ 
+                                    Surface Area =       221.481 m²/g
+ 
+ 

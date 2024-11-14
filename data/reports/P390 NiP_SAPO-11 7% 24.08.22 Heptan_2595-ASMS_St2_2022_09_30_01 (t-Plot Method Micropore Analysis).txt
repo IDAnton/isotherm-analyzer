@@ -1,0 +1,55 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:9/30/2022      Operator: Ayupov              Date:2022/10/19
+Sample ID:     P390 NiP/SAPO-11 7% 24.08.22 HeptanFilename:  P390 NiP_SAPO-11 7% 24.08.22 Heptan_2595-ASMS_St2_2022_09_30_01.QPS
+Sample Desc:   Schamanaew          Comment:        
+Outgas Time:   10.0 hrs            Outgas Temp:   300.0 °C            Sample Weight: 0.2433 g
+Analysis gas:  Nitrogen            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 1119.6 min          Instrument:    Autosorb Station 2  Bath temp.:    77.3 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 3.54 ÅEff. cell stem diam. (d): 4.0000 mm
+ 
+t-Method       Calc. method: de Boer
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+            Relative                        Thickness                     Volume @ STP
+            Pressure                                                             
+                                              (nm)                           (cc/g)
+
+               7.687028e-02                    3.4905e-01                      3.589
+               8.885751e-02                    3.5903e-01                      3.726
+               9.374306e-02                    3.6294e-01                      3.780
+               1.135500e-01                    3.7806e-01                      3.982
+               1.381445e-01                    3.9566e-01                      4.235
+               1.633552e-01                    4.1283e-01                      4.449
+               1.884452e-01                    4.2938e-01                      4.646
+               2.134833e-01                    4.4558e-01                      4.826
+               2.381529e-01                    4.6140e-01                      5.030
+               2.633964e-01                    4.7757e-01                      5.217
+               2.884967e-01                    4.9375e-01                      5.377
+               3.134483e-01                    5.1002e-01                      5.537
+               3.384378e-01                    5.2659e-01                      5.684
+               3.633307e-01                    5.4345e-01                      5.979
+               3.878320e-01                    5.6047e-01                      6.191
+               4.133073e-01                    5.7871e-01                      6.412
+               4.382850e-01                    5.9722e-01                      6.570
+               4.631211e-01                    6.1632e-01                      6.826
+               4.875935e-01                    6.3593e-01                      7.079
+               5.130474e-01                    6.5727e-01                      7.281
+
+                                             V-t method summary
+                                         Thickness method: DeBoer
+                                           Slope =         1.191
+                                       Intercept =        -0.512
+                     Correlation coefficient, r  =         0.999488
+ 
+                                Micropore volume =         0.000 cc/g
+                                  Micropore area =         0.000 m²/g
+                           External surface area =        17.592 m²/g
+ 
+ 

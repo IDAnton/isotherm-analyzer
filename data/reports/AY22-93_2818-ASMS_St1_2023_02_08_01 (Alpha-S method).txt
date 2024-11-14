@@ -1,0 +1,36 @@
+                         Quantachrome ASWin™ - Automated Gas Sorption Data
+                                     Acquisition and Reduction
+                                ©1994-2013, Quantachrome Instruments
+                                            version 2.02
+
+Analysis                                          Report
+Operator:      Ayupov         Date:2/8/2023       Operator: Ayupov              Date:2023/04/27
+Sample ID:     AY22-93             Filename:      AY22-93_2818-ASMS_St1_2023_02_08_01.QPS
+Sample Desc:   Afonnikowa          Comment:        
+Outgas Time:   4.0 hrs             Outgas Temp:   300.0 °C            Sample Weight: 0.0668 g
+Analysis gas:  Nitrogen            Molec. Wt:     28.0134 g           Non-ideality:  6.58e-05 1/Torr
+Analysis Time: 942.1 min           Instrument:    Autosorb Station 1  Bath temp.:    77.3 K
+                                     Data Reduction Parameters
+               Thermal Transpiration: offEff. mol. diameter (D): 3.54 ÅEff. cell stem diam. (d): 4.0000 mm
+ 
+Alpha-s method Std. isotherm: CABOT_BP_280P / Po :     0.40
+Adsorbate      Nitrogen                 Temperature    77.350K
+               Molec. Wt.: 28.013       Cross Section: 16.200  Å²     Liquid Density: 0.808  g/cc
+
+          P/Po                Volume @ STP             Liquid Vol.                Alpha
+                                                                                     
+                                  cc/g                    cc/g                       
+
+           9.2826e-01              2.6455e+02              4.0921e-01              2.5917e+00
+           9.3528e-01              2.7049e+02              4.1839e-01              2.7052e+00
+           9.4260e-01              2.7811e+02              4.3019e-01              2.8758e+00
+           9.5054e-01              2.8720e+02              4.4424e-01              3.1118e+00
+
+                                           Alpha-S method summary
+                                           Slope =        43.220
+                               Alpha-S Intercept =       153.158 cc/g
+                         Correlation coefficient =         0.998
+ 
+                                Micropore volume =         0.237 cc/g
+ 
+ 

@@ -1,0 +1,69 @@
+== Analysis Data ==
+                                               Administrative information
+
+Analysis performed on:                                                        1/19/2024
+Analysis performed by:                                                        Ayupov
+Comments:                                                                      
+Instrument:                                                                   AS6KR/MP Station: 3
+Instrument version:                                                           n/a
+Software version:                                                             2.02
+ 
+                                                  Sample ifnformation
+
+Id:                                                                           AY24-2 PSTK-1
+Description:                                                                  Baranow
+Weight:                                                                       0.7655 g
+ 
+                                             Sample preparation information
+
+Outgas time:                                                                  2.0 hrs
+Outgas temperature:                                                           300.0 C
+ 
+                                                  Analysis information
+
+Analysis gas:                                                                 Nitrogen
+Cross Section Area:                                                           16.2 
+Molecular weight:                                                             28.0134 
+Non-ideality correction:                                                      6.58e-05 
+Ambient temperature:                                                          300 K
+Pressure tolerance band:                                                      0
+Equilibration time:                                                           1
+== Data Reduction Parameters ==
+                  Thermal Transpiration: off    Eff. mol. diameter (D): 3.54 Å      Eff. cell stem diam. (d): 4.0000 mm
+t-Method          Calc. method: Halsey
+MP method         Thickness interval: 0.50A
+Alpha-s method    Std. isotherm: _AALUM1        P / Po :          0.40
+BJH/DH method     Moving pt. avg.: 3            Ignoring P-tags below 0.35 P/Po
+DA Method         Incr. E:    500.000           Incr. n:          0.100             Interact. Const. (K): 2.960nm³ x kJ / mol
+DR method         Affinity coefficient (ß): 0.3300
+Adsorbate model   Nitrogen                      Temperature       77.350K
+                  Molec. Wt.: 28.013            Cross Section:    16.200  Å²        Liquid Density:   0.808  g/cc
+                  Contact Angle: 0.0  degrees   Surf. Tension:    8.850  erg/cm²
+                  Critical Temp.: 126.200  K    Critical Press.:  33.500  atm       SuperCritic. K.:  1.000
+                  Avg. Diameter:0.300  nm       Polarizability:   1.460  (cc/molec) x 10-24Magn. Suscept.:2.000
+                  Molec. Density6.700  (mol/cm²)x1014
+Adsorbent model   Oxygen/Zeolite
+                  Atom Diameter: 0.276  nm      Surf. Atom Dens.: 13.100  (mol/cm²)x1014Polarizability: 2.500  (cc/molec)x10-24
+                                                Magn. Susc.:      1.300  (cc/molec)x10-29
+== DR summary ==
+                                                     Slope =          -6.447e-02
+                                                 Intercept =           2.751e-02
+                                   Correlation Coefficient =           0.9999
+ 
+                                        Average Pore width =           2.232nm
+                                         Adsorption energy =          11.650 kJ/mol
+                                          Micropore volume =           0.044 cc/g
+                                    Micropore surface area =         125.165 m²/g
+== DR method ==
+
+
+                         Log2(P/Po)                                                Weight Adsorbed
+                                                                                           
+                                                                                         (g)
+
+                             2.719060e+00                                                1.8386e-02
+                             2.641977e+00                                                1.8589e-02
+                             2.533092e+00                                                1.8879e-02
+                             2.398401e+00                                                1.9265e-02
+                             2.234745e+00                                                1.9738e-02
+                             2.047419e+00                                                2.0313e-02

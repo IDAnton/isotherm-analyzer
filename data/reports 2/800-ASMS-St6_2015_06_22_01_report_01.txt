@@ -1,0 +1,169 @@
+== Analysis Data ==
+                                               Administrative information
+
+Analysis performed on:                                                        6/22/2015
+Analysis performed by:                                                        Ayupov
+Comments:                                                                      
+Instrument:                                                                   AS6KR/MP Station: 6
+Instrument version:                                                           n/a
+Software version:                                                             2.02
+ 
+                                                  Sample ifnformation
+
+Id:                                                                           Nb-EISA 115
+Description:                                                                  Maksimchuk
+Weight:                                                                       0.0742 g
+ 
+                                             Sample preparation information
+
+Outgas time:                                                                  3.0 hrs
+Outgas temperature:                                                           300.0 C
+ 
+                                                  Analysis information
+
+Analysis gas:                                                                 Carbon-dioxide
+Cross Section Area:                                                           21 
+Molecular weight:                                                             44.01 
+Non-ideality correction:                                                      9.1e-06 
+Ambient temperature:                                                          300 K
+Pressure tolerance band:                                                      0
+Equilibration time:                                                           1
+== Data Reduction Parameters ==
+                  Thermal Transpiration: off    Eff. mol. diameter (D): 3.54 Å      Eff. cell stem diam. (d): 4.0000 mm
+                  Po override: 26142.00 Torr
+t-Method          Calc. method: de Boer
+Alpha-s method    Std. isotherm: _ASIL1         P / Po :          0.40
+BJH/DH method     Moving pt. avg.: off          Ignoring P-tags below 0.35 P/Po
+DA Method         Incr. E:    500.000           Incr. n:          0.100             Interact. Const. (K): 2.960nm³ x kJ / mol
+DR method         Affinity coefficient (ß): 0.3900
+Adsorbate         Carbon-dioxide                Temperature       273.150K
+                  Molec. Wt.: 44.010            Cross Section:    21.000  Å²        Liquid Density:   0.927  g/cc
+                  Contact Angle: 0.0  degrees   Surf. Tension:    4.350  erg/cm²
+                  Critical Temp.: 304.100  K    Critical Press.:  72.900  atm       SuperCritic. K.:  1.000
+                  Avg. Diameter:0.330  nm       Polarizability:   2.560  (cc/molec) x 10-24Magn. Suscept.:3.500
+                  Molec. Density6.420  (mol/cm²)x1014
+Adsorbent         Oxygen/Zeolite
+== Isotherm ==
+
+
+                          Relative                                                  Volume @ STP
+                          Pressure                                                         
+                                                                                        cc/g
+
+                             3.03311e-05                                                -0.0030
+                             5.98365e-05                                                -0.0026
+                             8.97595e-05                                                -0.0020
+                             1.19580e-04                                                -0.0035
+                             1.46519e-04                                                 0.0505
+                             1.86738e-04                                                 0.2138
+                             2.05862e-04                                                 0.2708
+                             2.59378e-04                                                 0.3883
+                             2.85843e-04                                                 0.4477
+                             2.99831e-04                                                 0.4782
+                             6.60312e-04                                                 1.2881
+                             1.03449e-03                                                 2.1010
+                             1.22570e-03                                                 2.4854
+                             1.53415e-03                                                 3.1161
+                             1.79936e-03                                                 3.6335
+                             2.08878e-03                                                 4.1757
+                             2.37987e-03                                                 4.7117
+                             2.67152e-03                                                 5.2374
+                             2.96326e-03                                                 5.7543
+                             3.65025e-03                                                 6.9434
+                             4.37711e-03                                                 8.1077
+                             5.10489e-03                                                 9.2525
+                             5.83428e-03                                                10.3463
+                             6.56164e-03                                                11.4238
+                             7.29008e-03                                                12.4627
+                             8.01804e-03                                                13.4734
+                             8.74570e-03                                                14.4615
+                             9.47274e-03                                                15.4269
+                             1.02008e-02                                                16.3762
+                             1.09292e-02                                                17.2981
+                             1.16566e-02                                                18.2048
+                             1.23832e-02                                                19.0862
+                             1.31101e-02                                                19.9557
+                             1.38385e-02                                                20.8061
+                             1.45664e-02                                                21.6374
+                             1.52939e-02                                                22.4638
+                             1.60202e-02                                                23.2781
+                             1.67471e-02                                                24.0917
+                             1.74747e-02                                                24.8765
+                             1.82013e-02                                                25.6622
+                             1.89295e-02                                                26.4374
+                             1.96563e-02                                                27.1899
+                             2.03846e-02                                                27.9358
+                             2.11115e-02                                                28.6727
+                             2.18369e-02                                                29.4091
+                             2.25658e-02                                                30.1277
+                             2.32923e-02                                                30.8493
+                             2.40199e-02                                                31.5557
+                             2.47464e-02                                                32.2484
+                             2.54732e-02                                                32.9490
+                             2.62002e-02                                                33.6407
+                             2.69274e-02                                                34.3248
+                             2.76378e-02                                                35.1459
+                             2.83743e-02                                                36.0046
+                             2.88337e-02                                                36.5829
+== Absolute Isotherm ==
+
+
+                          Pressure                                                  Volume @ STP
+                                                                                           
+                            Torr                                                        cc/g
+
+                             0.7929                                                     -0.0030
+                             1.5642                                                     -0.0026
+                             2.3465                                                     -0.0020
+                             3.1260                                                     -0.0035
+                             3.8303                                                      0.0505
+                             4.8817                                                      0.2138
+                             5.3816                                                      0.2708
+                             6.7807                                                      0.3883
+                             7.4725                                                      0.4477
+                             7.8382                                                      0.4782
+                            17.2619                                                      1.2881
+                            27.0436                                                      2.1010
+                            32.0422                                                      2.4854
+                            40.1057                                                      3.1161
+                            47.0389                                                      3.6335
+                            54.6049                                                      4.1757
+                            62.2146                                                      4.7117
+                            69.8389                                                      5.2374
+                            77.4654                                                      5.7543
+                            95.4250                                                      6.9434
+                           114.4265                                                      8.1077
+                           133.4521                                                      9.2525
+                           152.5197                                                     10.3463
+                           171.5343                                                     11.4238
+                           190.5773                                                     12.4627
+                           209.6077                                                     13.4734
+                           228.6301                                                     14.4615
+                           247.6362                                                     15.4269
+                           266.6681                                                     16.3762
+                           285.7120                                                     17.2981
+                           304.7259                                                     18.2048
+                           323.7219                                                     19.0862
+                           342.7230                                                     19.9557
+                           361.7672                                                     20.8061
+                           380.7937                                                     21.6374
+                           399.8122                                                     22.4638
+                           418.8001                                                     23.2781
+                           437.8036                                                     24.0917
+                           456.8230                                                     24.8765
+                           475.8179                                                     25.6622
+                           494.8547                                                     26.4374
+                           513.8548                                                     27.1899
+                           532.8943                                                     27.9358
+                           551.8979                                                     28.6727
+                           570.8610                                                     29.4091
+                           589.9143                                                     30.1277
+                           608.9064                                                     30.8493
+                           627.9285                                                     31.5557
+                           646.9212                                                     32.2484
+                           665.9213                                                     32.9490
+                           684.9263                                                     33.6407
+                           703.9362                                                     34.3248
+                           722.5062                                                     35.1459
+                           741.7603                                                     36.0046
+                           753.7696                                                     36.5829
