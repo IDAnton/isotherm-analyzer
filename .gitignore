@@ -7,11 +7,6 @@ old notebooks/step-gen.ipynb
 .idea
 /__pycache__/
 *.mp4
-/data/datasets
 *.pyc
-/data/
 /animations/
-/data/
 /old notebooks/
-/data/
-/data/initial kernels/
